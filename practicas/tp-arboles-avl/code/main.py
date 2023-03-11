@@ -3,7 +3,7 @@ import binarytree
 import avltree as avl
 
 
-"""
+
 B = binarytree.BinaryTree()
 binarytree.insert(B , "E" , 10)
 binarytree.insert(B , "C" , 5)
@@ -50,3 +50,4 @@ print(B.leftnode.value)
 print(B.rightnode.value)
 print(B.leftnode.rightnode.value)
 
+"""

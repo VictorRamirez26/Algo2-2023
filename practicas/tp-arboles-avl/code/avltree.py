@@ -11,31 +11,28 @@ class AVLNode:
 	
 
 def rotateLeft(Tree , avlnode):
-   aux = avlnode
-   print("Raiz vieja" , aux.value)
+   raiz_vieja = avlnode
    Tree.root = avlnode.rightnode
-   aux2 = Tree.root.leftnode 
-   print("Hijo de la raiz nueva" , aux2.value)
-   Tree.root.leftnode = aux
+   raiz_nueva = Tree.root    
+   aux = raiz_nueva.leftnode 
+   raiz_nueva.leftnode = raiz_vieja
 
-   if Tree.root.leftnode != None:
-        aux.rightnode = aux2
-
-   return Tree.root
+   if aux != None:
+        raiz_vieja.rightnode = aux
+   return raiz_nueva
 
 
 def rotateRight(Tree , avlnode):
-   aux = avlnode
-   print("aux: " ,aux)
+   raiz_vieja = avlnode
    Tree.root = avlnode.leftnode
-   aux2 = Tree.root.rightnode 
-   print("aux2: " ,aux2)
-   Tree.root.rightnode = aux
+   raiz_nueva = Tree.root
+   aux = Tree.root.rightnode 
+   raiz_nueva.rightnode = raiz_vieja
 
-   if Tree.root.rightnode != None:
-        aux.leftnode = aux2
+   if aux != None:
+        raiz_vieja.leftnode = aux
 
-   return Tree.root
+   return raiz_nueva
 
     
     
