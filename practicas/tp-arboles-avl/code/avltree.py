@@ -12,8 +12,10 @@ class AVLNode:
 
 def rotateLeft(Tree , avlnode):
    aux = avlnode
+   print("Raiz vieja" , aux.value)
    Tree.root = avlnode.rightnode
    aux2 = Tree.root.leftnode 
+   print("Hijo de la raiz nueva" , aux2.value)
    Tree.root.leftnode = aux
 
    if Tree.root.leftnode != None:
