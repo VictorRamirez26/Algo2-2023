@@ -34,5 +34,32 @@ def rotateRight(Tree , avlnode):
 
    return raiz_nueva
 
-    
-    
+
+def calculateBalance(ALVTree):
+     node = AVLNode()
+     node = ALVTree.root
+     #Queremos actualizar el node.bf
+     height_left = balanceRecursive(node.leftnode)
+     height_right = balanceRecursive(node.rightnode)
+     bf = height_left - height_right
+     node.bf = bf
+
+     return node
+     
+
+def balanceRecursive(node):
+     
+     if node == None:
+          return 0
+     
+     height_left = balanceRecursive(node.leftnode)
+     height_right = balanceRecursive(node.right)
+
+     bf = height_left - height_right
+     node.bf = bf
+
+     altura = max(height_left , height_right )
+
+     return 1 + altura 
+
+
