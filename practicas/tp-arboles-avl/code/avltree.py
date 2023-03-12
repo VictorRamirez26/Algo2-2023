@@ -36,8 +36,7 @@ def rotateRight(Tree , avlnode):
 
 
 def calculateBalance(ALVTree):
-     node = AVLNode()
-     node = ALVTree.root
+     node = ALVTree
      #Queremos actualizar el node.bf
      height_left = balanceRecursive(node.leftnode)
      height_right = balanceRecursive(node.rightnode)
@@ -53,7 +52,8 @@ def balanceRecursive(node):
           return 0
      
      height_left = balanceRecursive(node.leftnode)
-     height_right = balanceRecursive(node.right)
+     height_right = balanceRecursive(node.rightnode)
+     print(f"Altura izquierda {height_left} , Altura derecha {height_right}")
 
      bf = height_left - height_right
      node.bf = bf

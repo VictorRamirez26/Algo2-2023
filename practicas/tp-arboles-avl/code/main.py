@@ -53,9 +53,10 @@ print(B.leftnode.rightnode.value)
 
 """
 
-"""
+
+
 #Llenamos un arbol avl
-B_AVL = avl.AVLTree()
+B = avl.AVLTree()
 #Nodo 1
 nodeA = avl.AVLNode()
 nodeA.value = "A"
@@ -63,13 +64,26 @@ nodeA.key = 10
 #Nodo B
 nodeB = avl.AVLNode()
 nodeB.value = "B"
-nodeB.key = 15
+nodeB.key = 5
 #Nodo C
-nodeA = avl.AVLNode()
-nodeA.value = "C"
-nodeA.key = 5
+nodeC = avl.AVLNode()
+nodeC.value = "C"
+nodeC.key = 15
 
+#Nodo D
+nodeD = avl.AVLNode()
+nodeD.value = "D"
+nodeD.key = 3
 
-B_AVL.root = node_avl
-print(B_AVL.root.value)
-"""
+#Hacemos que el B.root sea el nodoA y asignamos los hijos de A
+nodeA.leftnode = nodeB
+nodeA.rightnode = nodeC
+nodeA.leftnode.leftnode = nodeD
+B.root = nodeA
+
+new_arbol = avl.calculateBalance(B.root)
+
+print(new_arbol.bf)
+print(new_arbol.leftnode.bf)
+print(new_arbol.rightnode.bf)
+print(new_arbol.leftnode.leftnode.bf)
