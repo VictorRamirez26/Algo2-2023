@@ -54,10 +54,11 @@ print(B.leftnode.rightnode.value)
 """
 
 
-
+#Test de Balance Factor
+"""
 #Llenamos un arbol avl
 B = avl.AVLTree()
-#Nodo 1
+#Nodo A
 nodeA = avl.AVLNode()
 nodeA.value = "A"
 nodeA.key = 10
@@ -81,9 +82,40 @@ nodeA.rightnode = nodeC
 nodeA.leftnode.leftnode = nodeD
 B.root = nodeA
 
+
 new_arbol = avl.calculateBalance(B.root)
 
 print(new_arbol.bf)
 print(new_arbol.leftnode.bf)
 print(new_arbol.rightnode.bf)
 print(new_arbol.leftnode.leftnode.bf)
+"""
+
+
+#Llenamos un arbol avl
+B = avl.AVLTree()
+#Nodo A
+nodeA = avl.AVLNode()
+nodeA.value = "A"
+nodeA.key = 10
+#Nodo B
+nodeB = avl.AVLNode()
+nodeB.value = "C"
+nodeB.key = 15
+#Nodo C
+nodeC = avl.AVLNode()
+nodeC.value = "B"
+nodeC.key = 13
+
+
+#Hacemos que el B.root sea el nodoA y asignamos los hijos de A
+nodeA.rightnode = nodeB
+nodeA.rightnode.leftnode = nodeC
+B.root = nodeA
+
+#Caso 1
+balanced_tree = avl.reBalance(B.root)
+#print(balanced_tree.key)
+#print(balanced_tree.leftnode.key)
+#print(balanced_tree.rightnode.key)
+
