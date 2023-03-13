@@ -2,7 +2,7 @@ from algo1 import *
 import binarytree
 import avltree as avl
 
-
+#Rotaciones
 """
 
 B = binarytree.BinaryTree()
@@ -90,7 +90,8 @@ print(new_arbol.leftnode.bf)
 print(new_arbol.rightnode.bf)
 print(new_arbol.leftnode.leftnode.bf)
 """
-
+#Caso 1 (Desbalanceado por derecha)
+"""
 
 #Llenamos un arbol avl
 B = avl.AVLTree()
@@ -113,9 +114,35 @@ nodeA.rightnode = nodeB
 nodeA.rightnode.leftnode = nodeC
 B.root = nodeA
 
-#Caso 1
+print("CASO 1:")
 balanced_tree = avl.reBalance(B.root)
-#print(balanced_tree.key)
-#print(balanced_tree.leftnode.key)
-#print(balanced_tree.rightnode.key)
+print(balanced_tree.value)
+print(balanced_tree.leftnode.value)
+print(balanced_tree.rightnode.value)
+print("__"*10)
+"""
 
+#Caso 2 (Desbalanceado por izquierda)
+
+B = avl.AVLTree()
+nodeA = avl.AVLNode()
+nodeA.value = "A"
+nodeA.key = 10
+#Nodo B
+nodeB = avl.AVLNode()
+nodeB.value = "B"
+nodeB.key = 5
+#Nodo C
+nodeC = avl.AVLNode()
+nodeC.value = "C"
+nodeC.key = 7
+
+#Hacemos que el B.root sea el nodoA y asignamos los hijos de A
+print("CASO 2:")
+nodeA.leftnode = nodeB
+nodeA.leftnode.rightnode = nodeC
+B.root = nodeA
+balanced_tree = avl.reBalance(B.root)
+print(balanced_tree.value)
+print(balanced_tree.leftnode.value)
+print(balanced_tree.rightnode.value)
