@@ -123,7 +123,7 @@ print("__"*10)
 """
 
 #Caso 2 (Desbalanceado por izquierda)
-
+"""
 B = avl.AVLTree()
 nodeA = avl.AVLNode()
 nodeA.value = "A"
@@ -146,3 +146,39 @@ balanced_tree = avl.reBalance(B.root)
 print(balanced_tree.value)
 print(balanced_tree.leftnode.value)
 print(balanced_tree.rightnode.value)
+"""
+
+#Teste insert
+
+B = avl.AVLTree()
+
+avl.insert(B , 20)
+avl.insert(B , 10)
+avl.insert(B , 40)
+avl.insert(B , 5)
+avl.insert(B , 18)
+avl.insert(B , 80)
+"""
+
+print(B.root.key)
+print(B.root.leftnode.key)
+print(B.root.rightnode.key)
+print(B.root.leftnode.leftnode.key)
+print(B.root.leftnode.rightnode.key)
+print(B.root.rightnode.rightnode.key)
+"""
+
+print("**" * 10)
+#Inserto una key que va a desbalancear el arbol
+print("Inserto un valor que desbalancea el arbol")
+avl.insert(B , 100)
+print(B.root.rightnode.key)
+print(B.root.rightnode.rightnode.key)
+print(B.root.rightnode.rightnode.rightnode.key)
+print(B.root.rightnode.leftnode.key)
+#Arreglar error, dentro de la funcion insert_recursive rebalancea correctamente el nodo pero al devolverlo no queda guardado
+
+
+
+
+

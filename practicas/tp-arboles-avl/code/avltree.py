@@ -98,3 +98,74 @@ def reBalance(AVLTree):
 
      #Devuelvo el arbol
      return AVLTree
+
+
+def insert_key(AVLTree , key):
+     new_node = AVLNode()
+     new_node.key = key
+     current = AVLTree.root
+
+     if current != None:
+         return insertR(current,new_node)
+     else:
+          AVLTree.root = new_node
+          return new_node
+
+
+def insertR(current,newNode):
+  
+  
+  if newNode.key < current.key:
+    if current.leftnode == None:
+          current.leftnode = newNode
+          newNode.parent = current
+          return newNode
+    else:
+          return insertR(current.leftnode,newNode)
+    
+  elif newNode.key > current.key:
+    if current.rightnode == None:
+          current.rightnode = newNode
+          newNode.parent = current
+          return newNode
+    else:
+          return insertR(current.rightnode,newNode)
+    
+  else:
+          return None
+
+
+def insert(AVLTree , key):
+     if AVLTree.root == None:
+          return insert_key(AVLTree , key)
+     new_node = AVLTree.root
+     #Primero inserto el elemento
+     new_node = insert_key(AVLTree , key)
+     
+     #Luego voy desde el nodo insertado hacia atras
+     print("Ejecuto insert_recursive desde el nodo insertado") 
+     insert_recursive(new_node)
+     return 
+
+
+
+def insert_recursive(node):
+
+     if node == None:
+          return 
+     
+     node = calculateBalance(node)
+     print(node.bf)
+     if node.bf < -1 or node.bf > 1:
+          node = reBalance(node)
+          print(f"El nodo rebalanceado es {node.key} , izq: {node.leftnode.key} , der: {node.rightnode.key}")
+          return node
+     else:
+          return insert_recursive(node.parent)
+
+     
+
+
+
+
+
