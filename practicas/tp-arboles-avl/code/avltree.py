@@ -138,14 +138,13 @@ def insertR(current,newNode):
 def insert(AVLTree , key):
      if AVLTree.root == None:
           return insert_key(AVLTree , key)
+     
      new_node = AVLTree.root
      #Primero inserto el elemento
      new_node = insert_key(AVLTree , key)
-     
+
      #Luego voy desde el nodo insertado hacia atras
-     print("Ejecuto insert_recursive desde el nodo insertado") 
-     insert_recursive(new_node)
-     return 
+     return insert_recursive(new_node)
 
 
 
@@ -154,18 +153,28 @@ def insert_recursive(node):
      if node == None:
           return 
      
+     #Calculo el balance factor 
      node = calculateBalance(node)
-     print(node.bf)
+
+     #Si esta desbalanceado entonces:
      if node.bf < -1 or node.bf > 1:
-          node = reBalance(node)
-          print(f"El nodo rebalanceado es {node.key} , izq: {node.leftnode.key} , der: {node.rightnode.key}")
-          return node
+          #Separo en 2 casos:
+          if node.bf < -1:
+               #Caso 1: Guardo el padre y lo guardo en aux , luego en node retorno el nodo balanceado.
+               #Luego vuelvo a asignar el hijo en el lado derecho (Por ser node.bf < -1)
+               aux = node.parent
+               node = reBalance(node)
+               aux.rightnode = node
+               return aux.rightnode
+          elif node.bf > 1:
+               #Caso 2: Guardo el padre y lo guardo en aux , luego en node retorno el nodo balanceado.
+               #Luego vuelvo a asignar el hijo en el lado izquierdo (Por ser node.bf > 1)
+               aux = node.parent
+               node = reBalance(node)
+               aux.leftnode = node
+               return aux.leftnode
      else:
+          #Si no esta desbalanceado me fijo en el parent
           return insert_recursive(node.parent)
 
      
-
-
-
-
-
