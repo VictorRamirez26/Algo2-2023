@@ -117,9 +117,8 @@ nodeA.rightnode.leftnode = nodeB
 nodeB.parent = nodeC
 nodeC.parent = nodeA
 B.root = nodeA
-
 print("CASO 1:")
-balanced_tree = avl.reBalance(B.root)
+balanced_tree = avl.reBalance(B)
 print(balanced_tree.value)
 print(balanced_tree.leftnode.value)
 print(balanced_tree.rightnode.value)

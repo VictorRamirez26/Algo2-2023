@@ -11,6 +11,7 @@ class AVLNode:
 	
 
 def rotateLeft(Tree , avlnode):
+
    raiz_vieja = avlnode
    Tree.root = avlnode.rightnode
    raiz_nueva = Tree.root    
@@ -43,12 +44,16 @@ def rotateRight(Tree , avlnode):
 
 #Recibe la raiz de un arbol
 def calculateBalance(ALVTree):
+     node = ALVTree.root
      if ALVTree == None:
           return
-     node = ALVTree
      #Queremos actualizar el node.bf
-     height_left = calculateBalance_balanceRecursive(node.leftnode)
-     height_right = calculateBalance_balanceRecursive(node.rightnode)
+     height_left = 0
+     height_right = 0
+     if node.leftnode != None:
+          height_left = calculateBalance_balanceRecursive(node.leftnode)
+     if node.rightnode != None:
+          height_right = calculateBalance_balanceRecursive(node.rightnode)
      bf = height_left - height_right
      node.bf = bf
 
@@ -72,47 +77,69 @@ def calculateBalance_balanceRecursive(node):
      return 1 + altura 
 
 def reBalance(AVLTree):
-     AVLTree = calculateBalance(AVLTree)
-
-     if AVLTree.bf < -1:
-          AVLTree.rightnode = reBalance_R(AVLTree.rightnode)
-
-     elif AVLTree.bf > 1:
-          AVLTree.leftnode = reBalance_R(AVLTree.leftnode)
-
-     return AVLTree
+     calculateBalance(AVLTree)
+     reBalance_recursive(AVLTree , AVLTree.root)
 
 
-
-def reBalance_R(AVLTree): 
-     if AVLTree == None:
-          return 
+def reBalance_recursive(AVLTree , node):
      
-     #Balanceo el lado izquierdo y derecho recursivamente 
-     AVLTree.leftnode = reBalance_R(AVLTree.leftnode)
-     AVLTree.rightnode = reBalance_R(AVLTree.rightnode)
 
-     #Calculo el balance factor de la raiz y sus hijos 
-     balance_f_der = calculateBalance(AVLTree.rightnode)
-     balance_f_iz = calculateBalance(AVLTree.leftnode)
+     if node.leftnode != None:
+          reBalance_recursive(AVLTree, node.leftnode)
+
+     if node.bf < -1:
+          if node.rightnode.bf > 0:
+               rotateRight(AVLTree, node.rightnode)
+               rotateLeft(AVLTree,node)
+               calculateBalance(AVLTree)
+          else:
+               rotateLeft(AVLTree,node)
+               calculateBalance(AVLTree)
+
+     elif node.bf > 1:
+          if node.leftnode.bf < 0:
+               rotateLeft(AVLTree,node.leftnode)
+               rotateRight(AVLTree,node)
+               calculateBalance(AVLTree)
+          else:
+               rotateRight(AVLTree,node)
+               calculateBalance(AVLTree)
 
 
-     #Si el arbol esta desbalanceado por derecha:
-     if balance_f_der != None:
-          if balance_f_der.bf > 0:
-               AVLTree.rightnode =  rotateRight(AVLTree , AVLTree.rightnode)
+     if node.rightnode != None:
+          reBalance_recursive(AVLTree , node.rightnode)
 
-               return rotateLeft(AVLTree , AVLTree)
 
-     #Si el arbol esta desbalanceado por izquierda:
-     if balance_f_iz != None:
-          if balance_f_iz.bf < 0:
-               AVLTree.leftnode =  rotateLeft(AVLTree , AVLTree.leftnode)
+# def reBalance_R(AVLTree): 
+#      if AVLTree == None:
+#           return 
+     
+#      #Balanceo el lado izquierdo y derecho recursivamente 
+#      AVLTree.leftnode = reBalance_R(AVLTree.leftnode)
+#      AVLTree.rightnode = reBalance_R(AVLTree.rightnode)
 
-               return rotateRight(AVLTree , AVLTree)
+#      #Calculo el balance factor de la raiz y sus hijos 
+#      AVLTree = calculateBalance(AVLTree)
+#      balance_f_der = calculateBalance(AVLTree.rightnode)
+#      balance_f_iz = calculateBalance(AVLTree.leftnode)
 
-     #Devuelvo el arbol
-     return AVLTree
+
+#      #Si el arbol esta desbalanceado por derecha:
+#      if balance_f_der != None:
+#           if balance_f_der.bf > 0:
+#                AVLTree.rightnode =  rotateRight(AVLTree , AVLTree.rightnode)
+
+#                return rotateLeft(AVLTree , AVLTree)
+
+#      #Si el arbol esta desbalanceado por izquierda:
+#      if balance_f_iz != None:
+#           if balance_f_iz.bf < 0:
+#                AVLTree.leftnode =  rotateLeft(AVLTree , AVLTree.leftnode)
+
+#                return rotateRight(AVLTree , AVLTree)
+
+#      #Devuelvo el arbol
+#      return AVLTree
 
 
 def insert_key(AVLTree , key):
@@ -121,7 +148,7 @@ def insert_key(AVLTree , key):
      current = AVLTree.root
 
      if current != None:
-         return insertR(current,new_node)
+          return insertR(current,new_node)
      else:
           AVLTree.root = new_node
           return new_node
