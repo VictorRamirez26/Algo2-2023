@@ -2,7 +2,8 @@ from algo1 import *
 import binarytree
 import avltree as avl
 
-#Rotaciones
+#Rotate right
+
 """
 
 B = binarytree.BinaryTree()
@@ -29,8 +30,9 @@ print(B.leftnode.leftnode.value)
 print(B.rightnode.value)
 print(B.rightnode.leftnode.value)
 print(B.rightnode.rightnode.value)
+"""
 
-
+#Rotate Left
 
 B = binarytree.BinaryTree()
 binarytree.insert(B , "A" , 10)
@@ -51,7 +53,6 @@ print(B.leftnode.value)
 print(B.rightnode.value)
 print(B.leftnode.rightnode.value)
 
-"""
 
 
 #Test de Balance Factor
@@ -149,7 +150,7 @@ print(balanced_tree.rightnode.value)
 """
 
 #Teste insert
-
+"""
 B = avl.AVLTree()
 
 avl.insert(B , 20)
@@ -160,7 +161,7 @@ avl.insert(B , 18)
 avl.insert(B , 80)
 
 #Antes de que el arbol quede desbalanceado
-"""
+
 print(B.root.key)
 print(B.root.leftnode.key)
 print(B.root.rightnode.key)
@@ -169,6 +170,7 @@ print(B.root.leftnode.rightnode.key)
 print(B.root.rightnode.rightnode.key)
 """
 
+"""
 print("**" * 10)
 #Inserto una key que va a desbalancear el arbol
 print("Inserto un valor que desbalancea el arbol por derecha")
@@ -183,13 +185,6 @@ print(B.root.leftnode.rightnode.key)
 
 
 #Falta corregir el caso del desbalance izquierdo
-#avl.insert(B , 4)
+avl.insert(B , 4)
 #avl.insert(B , 3)
-
-
-
-
-
-
-
-
+"""
