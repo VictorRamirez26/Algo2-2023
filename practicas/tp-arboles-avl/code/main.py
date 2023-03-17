@@ -33,6 +33,7 @@ print(B.rightnode.rightnode.value)
 """
 
 #Rotate Left
+"""
 
 B = binarytree.BinaryTree()
 binarytree.insert(B , "A" , 10)
@@ -53,7 +54,7 @@ print(B.leftnode.value)
 print(B.rightnode.value)
 print(B.leftnode.rightnode.value)
 
-
+"""
 
 #Test de Balance Factor
 """
@@ -92,7 +93,7 @@ print(new_arbol.rightnode.bf)
 print(new_arbol.leftnode.leftnode.bf)
 """
 #Caso 1 (Desbalanceado por derecha)
-"""
+
 
 #Llenamos un arbol avl
 B = avl.AVLTree()
@@ -100,19 +101,21 @@ B = avl.AVLTree()
 nodeA = avl.AVLNode()
 nodeA.value = "A"
 nodeA.key = 10
-#Nodo B
-nodeB = avl.AVLNode()
-nodeB.value = "C"
-nodeB.key = 15
 #Nodo C
 nodeC = avl.AVLNode()
-nodeC.value = "B"
-nodeC.key = 13
+nodeC.value = "C"
+nodeC.key = 15
+#Nodo B
+nodeB = avl.AVLNode()
+nodeB.value = "B"
+nodeB.key = 13
 
 
 #Hacemos que el B.root sea el nodoA y asignamos los hijos de A
-nodeA.rightnode = nodeB
-nodeA.rightnode.leftnode = nodeC
+nodeA.rightnode = nodeC
+nodeA.rightnode.leftnode = nodeB
+nodeB.parent = nodeC
+nodeC.parent = nodeA
 B.root = nodeA
 
 print("CASO 1:")
@@ -121,7 +124,7 @@ print(balanced_tree.value)
 print(balanced_tree.leftnode.value)
 print(balanced_tree.rightnode.value)
 print("__"*10)
-"""
+
 
 #Caso 2 (Desbalanceado por izquierda)
 """
@@ -150,7 +153,9 @@ print(balanced_tree.rightnode.value)
 """
 
 #Teste insert
+
 """
+
 B = avl.AVLTree()
 
 avl.insert(B , 20)
@@ -168,9 +173,9 @@ print(B.root.rightnode.key)
 print(B.root.leftnode.leftnode.key)
 print(B.root.leftnode.rightnode.key)
 print(B.root.rightnode.rightnode.key)
-"""
 
-"""
+
+
 print("**" * 10)
 #Inserto una key que va a desbalancear el arbol
 print("Inserto un valor que desbalancea el arbol por derecha")
@@ -188,3 +193,4 @@ print(B.root.leftnode.rightnode.key)
 avl.insert(B , 4)
 #avl.insert(B , 3)
 """
+
