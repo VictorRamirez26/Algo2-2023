@@ -118,18 +118,17 @@ def reBalance_recursive(AVLTree , node):
 
 
 
-def insert(AVLTree , key):
+def insert_key(AVLTree , key):
      new_node = AVLNode()
      new_node.key = key
      current = AVLTree.root
 
      if current != None:
-          return insertR(current,new_node)
+         return insertR(current,new_node)
      else:
           AVLTree.root = new_node
-     
-     return reBalance(AVLTree)
-     
+          return new_node
+
 
 def insertR(current,newNode):
   
@@ -152,3 +151,53 @@ def insertR(current,newNode):
     
   else:
           return None
+
+
+def insert(AVLTree , key):
+     if AVLTree.root == None:
+          return insert_key(AVLTree , key)
+     
+     new_node = AVLTree.root
+     #Primero inserto el elemento
+     new_node = insert_key(AVLTree , key)
+
+     #Luego voy desde el nodo insertado hacia atras
+     insert_recursive(AVLTree , new_node)
+     return calculateBalance(AVLTree)
+
+
+
+def insert_recursive(B , node):
+
+     if node == None:
+          return 
+     
+     #Calculo el balance factor 
+     calculateBalance(B)
+
+
+     #Si esta desbalanceado entonces:
+     if node.bf < -1 or node.bf > 1:
+          #Separo en 2 casos:
+          if node.bf < -1:
+               #Caso 1: Guardo el padre y lo guardo en aux , luego en node retorno el nodo balanceado.
+               #Luego vuelvo a asignar el hijo en el lado derecho (Por ser node.bf < -1)
+               aux = node.parent
+               B2= AVLTree()
+               B2.root = node
+               node = reBalance(B2)
+               aux.rightnode = node.root
+               return aux.rightnode
+          elif node.bf > 1:
+               #Caso 2: Guardo el padre y lo guardo en aux , luego en node retorno el nodo balanceado.
+               #Luego vuelvo a asignar el hijo en el lado izquierdo (Por ser node.bf > 1)
+               aux = node.parent
+               B2 = AVLTree()
+               B2.root = node
+               node = reBalance(B2)
+               aux.leftnode = node.root
+               return aux.leftnode
+     else:
+          #Si no esta desbalanceado me fijo en el parent
+          return insert_recursive(B , node.parent)
+

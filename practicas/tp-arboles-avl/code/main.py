@@ -178,20 +178,13 @@ print(B.root.rightnode.rightnode.key)
 
 
 print("**" * 10)
-#Inserto una key que va a desbalancear el arbol
+#Inserto una key que va a desbalancear el arbol por derecha
 print("Inserto un valor que desbalancea el arbol por derecha")
 avl.insert(B , 100)
-print(B.root.key)
-print(B.root.rightnode.key)
-print(B.root.rightnode.rightnode.key)
-print(B.root.rightnode.leftnode.key)
-print(B.root.leftnode.key)
-print(B.root.leftnode.leftnode.key)
-print(B.root.leftnode.rightnode.key)
+#Desbalance izquierdo
+avl.insert(B , 4)
+#Inserto una key que va a desbalancear el arbol por izquierda
+avl.insert(B , 3)
 
-
-#Falta corregir el caso del desbalance izquierdo
-#avl.insert(B , 4)
-#avl.insert(B , 3)
 
 
