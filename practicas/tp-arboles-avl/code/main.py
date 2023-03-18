@@ -94,6 +94,7 @@ print(new_arbol.leftnode.leftnode.bf)
 """
 #Caso 1 (Desbalanceado por derecha)
 
+"""
 
 #Llenamos un arbol avl
 B = avl.AVLTree()
@@ -119,14 +120,15 @@ nodeC.parent = nodeA
 B.root = nodeA
 print("CASO 1:")
 balanced_tree = avl.reBalance(B)
-print(balanced_tree.value)
-print(balanced_tree.leftnode.value)
-print(balanced_tree.rightnode.value)
+print(balanced_tree.root.value)
+print(balanced_tree.root.leftnode.value)
+print(balanced_tree.root.rightnode.value)
 print("__"*10)
+"""
 
 
 #Caso 2 (Desbalanceado por izquierda)
-"""
+
 B = avl.AVLTree()
 nodeA = avl.AVLNode()
 nodeA.value = "A"
@@ -145,11 +147,11 @@ print("CASO 2:")
 nodeA.leftnode = nodeB
 nodeA.leftnode.rightnode = nodeC
 B.root = nodeA
-balanced_tree = avl.reBalance(B.root)
+balanced_tree = avl.reBalance(B)
 print(balanced_tree.value)
 print(balanced_tree.leftnode.value)
 print(balanced_tree.rightnode.value)
-"""
+
 
 #Teste insert
 

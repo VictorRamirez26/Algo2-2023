@@ -16,12 +16,15 @@ def rotateLeft(Tree , avlnode):
    Tree.root = avlnode.rightnode
    raiz_nueva = Tree.root    
    aux = raiz_nueva.leftnode 
+
    raiz_nueva.leftnode = raiz_vieja
    raiz_nueva.parent = raiz_vieja.parent
 
+   raiz_vieja.rightnode = None
+   raiz_vieja.parent = raiz_nueva
+
    if aux != None:
         raiz_vieja.rightnode = aux
-        raiz_vieja.parent = raiz_nueva
         aux.parent = raiz_vieja
    return raiz_nueva
 
@@ -31,12 +34,15 @@ def rotateRight(Tree , avlnode):
    Tree.root = avlnode.leftnode
    raiz_nueva = Tree.root
    aux = Tree.root.rightnode 
+
    raiz_nueva.rightnode = raiz_vieja
    raiz_nueva.parent = raiz_vieja.parent
 
+   raiz_vieja.leftnode = None
+   raiz_vieja.parent = raiz_nueva
+
    if aux != None:
         raiz_vieja.leftnode = aux
-        raiz_vieja.parent = raiz_nueva
         aux.parent = raiz_vieja
 
    return raiz_nueva
@@ -57,8 +63,8 @@ def calculateBalance(ALVTree):
      bf = height_left - height_right
      node.bf = bf
 
-     return node
-     
+     return ALVTree
+
 
 def calculateBalance_balanceRecursive(node):
      
@@ -79,6 +85,7 @@ def calculateBalance_balanceRecursive(node):
 def reBalance(AVLTree):
      calculateBalance(AVLTree)
      reBalance_recursive(AVLTree , AVLTree.root)
+     return AVLTree
 
 
 def reBalance_recursive(AVLTree , node):
@@ -89,7 +96,7 @@ def reBalance_recursive(AVLTree , node):
 
      if node.bf < -1:
           if node.rightnode.bf > 0:
-               rotateRight(AVLTree, node.rightnode)
+               AVLTree.root.rightnode = rotateRight(AVLTree.root.rightnode, node.rightnode)
                rotateLeft(AVLTree,node)
                calculateBalance(AVLTree)
           else:
@@ -98,7 +105,7 @@ def reBalance_recursive(AVLTree , node):
 
      elif node.bf > 1:
           if node.leftnode.bf < 0:
-               rotateLeft(AVLTree,node.leftnode)
+               AVLTree.root.leftnode = rotateLeft(AVLTree.root.leftnode,node.leftnode)
                rotateRight(AVLTree,node)
                calculateBalance(AVLTree)
           else:
