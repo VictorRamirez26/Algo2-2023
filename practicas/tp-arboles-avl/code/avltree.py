@@ -117,37 +117,6 @@ def reBalance_recursive(AVLTree , node):
           reBalance_recursive(AVLTree , node.rightnode)
 
 
-# def reBalance_R(AVLTree): 
-#      if AVLTree == None:
-#           return 
-     
-#      #Balanceo el lado izquierdo y derecho recursivamente 
-#      AVLTree.leftnode = reBalance_R(AVLTree.leftnode)
-#      AVLTree.rightnode = reBalance_R(AVLTree.rightnode)
-
-#      #Calculo el balance factor de la raiz y sus hijos 
-#      AVLTree = calculateBalance(AVLTree)
-#      balance_f_der = calculateBalance(AVLTree.rightnode)
-#      balance_f_iz = calculateBalance(AVLTree.leftnode)
-
-
-#      #Si el arbol esta desbalanceado por derecha:
-#      if balance_f_der != None:
-#           if balance_f_der.bf > 0:
-#                AVLTree.rightnode =  rotateRight(AVLTree , AVLTree.rightnode)
-
-#                return rotateLeft(AVLTree , AVLTree)
-
-#      #Si el arbol esta desbalanceado por izquierda:
-#      if balance_f_iz != None:
-#           if balance_f_iz.bf < 0:
-#                AVLTree.leftnode =  rotateLeft(AVLTree , AVLTree.leftnode)
-
-#                return rotateRight(AVLTree , AVLTree)
-
-#      #Devuelvo el arbol
-#      return AVLTree
-
 
 def insert_key(AVLTree , key):
      new_node = AVLNode()
