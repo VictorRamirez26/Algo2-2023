@@ -20,12 +20,12 @@ def insert(T, element):
     for i in range(len(element)):
         current.children = []
         children = current.children
-        new_node = None
+        new_node = False
 
-        if children != None: #Si la lista no esta vacia busco el elemento
-            new_node = element[i] in children
+        if children != []: #Si la lista no esta vacia busco el elemento
+            new_node = element[i] in children #Corregir esta parte para q devuelva la pos de un elemento
         else:
-            current.children = children #Sino dejo la lista vacia
+            current.children = children #Sino, dejo la lista vacia
         
         if new_node == False: #Si no se encontro el elemento en la lista children
             new_node = TrieNode()
