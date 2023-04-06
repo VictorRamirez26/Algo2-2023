@@ -66,3 +66,55 @@ def search_pos(element , lista):
             return i
         
     return None
+
+
+def search(T, element):
+    node = T.root
+    return searchR(node,element)
+
+
+def searchR(node,element):
+    children = node.children 
+
+    aux = search_list(element[0],children)
+    pos = search_pos(element[0],children)
+    if pos != None:
+        aux2 = children[pos]
+    
+    if aux == False:
+        return False
+    
+    if len(element) == 1 and aux2.isEndOfWord == True:
+        return True
+    
+    element = element[1:]
+    return searchR(aux2 , element)
+
+def delete(T , element):
+
+    if search(T,element) == False:
+        return False
+    
+    node = T.root
+    deleteR(node, element)
+
+
+def deleteR(node,element):
+
+    #Sirve para llegar al final de la palabra (desp separar por casos para eleminarlo bien)
+    children = node.children
+    pos = search_pos(element[0],children)
+    aux = children[pos]
+    element = element[1:]
+    if children != None and element != "":
+        return deleteR(aux , element)
+    
+    if len(children) == 1 and children[0].children == None: #Si la lista final tiene 1 elemento y no tiene hijos
+        node.children = None
+
+    
+    if len(children) > 1 and children[pos].children == None: #Si la lista final tiene 1 elemento y no tiene hijos
+        aux2 = children[0].parent
+        aux2.children = None
+
+    #Modificar el codigo para que la primera parte sea una funcion 
