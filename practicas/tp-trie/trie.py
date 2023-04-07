@@ -140,14 +140,21 @@ def buscar_patron(T , p , n):
     if T.root == None:
         return None
     node = T.root
-    last_node = fin_patron(p , node.children , n)
-    
-    if new_node == None:
+    last_node = fin_patron(p , node.children)
+    if last_node == None:
         return None
-    else:
-        pass
+    if last_node != None:
+        n = n - len(p)
+        
+        
+# def buscar_patron_recursive(node):
+#     aux = []
+#     for i in range(len(node)):
+#         aux = node[]
 
-def fin_patron(p , node , n):
+
+
+def fin_patron(p , node):
     if len(p) == 0:
         return node
     pos = search_pos(p[0] ,node)
@@ -157,7 +164,5 @@ def fin_patron(p , node , n):
     else:
         node = node[pos].children
         p = p[1:] 
-        n -= 1
-        return fin_patron(p , node , n)
-        
-        
+        return fin_patron(p ,node)
+              
