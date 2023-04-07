@@ -54,8 +54,11 @@ def insert(T, element):
 def search_list(element , lista):
 
     for i in range(len(lista)):
-        if element == lista[i].key:
-            return True
+        if lista[i] != None:
+            if element == lista[i].key:
+                return True
+        if lista[i] == None:
+            lista.pop(i)        
         
     return False
 
@@ -102,17 +105,27 @@ def delete(T , element):
     aux_element = element
     node = last_node(node , element)
     deleteR(node, aux_element)
-
+    return True
 
 def deleteR(node,element):
     ultimo_elemento = element[len(element)-1:]
+    element = element[:len(element)-1]
     pos = search_pos(ultimo_elemento , node)
 
     #Caso 0: Borro una palabra que este dentro de otra mas grande (Hola , Holanda)
     if node[pos].children != None and node[pos].isEndOfWord == True:
         node[pos].isEndOfWord = False
-        
-
+        return True
+    elif node[pos].children == None and len(node)==1: #Caso 1: Si el ultimo elemento no tiene hijos y es de longitud 1
+        aux = node[pos].parent.parent.children
+        node[0].parent.children = None
+        return deleteR(aux, element)
+    elif len(node)>1 and node[pos].children == None: #Caso 2: Si el ultimo nodo no tiene hijos y la longitud es mayor a 1
+        aux = node[pos].parent.parent.children
+        node[pos].parent.children.pop(pos) 
+        return deleteR(aux, element)
+    
+    
 def last_node(node , element):
     children = node.children
     pos = search_pos(element[0],children)
