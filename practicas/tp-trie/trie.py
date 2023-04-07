@@ -76,19 +76,22 @@ def search(T, element):
 def searchR(node,element):
     children = node.children 
 
+    if children == None:
+        return False
     aux = search_list(element[0],children)
     pos = search_pos(element[0],children)
     if pos != None:
         aux2 = children[pos]
     
-    if aux == False:
+    if aux == False :
         return False
     
     if len(element) == 1 and aux2.isEndOfWord == True:
         return True
     
-    element = element[1:]
+    element = element[1:] 
     return searchR(aux2 , element)
+
 
 def delete(T , element):
 
@@ -96,25 +99,26 @@ def delete(T , element):
         return False
     
     node = T.root
-    deleteR(node, element)
+    aux_element = element
+    node = last_node(node , element)
+    deleteR(node, aux_element)
 
 
 def deleteR(node,element):
+    ultimo_elemento = element[len(element)-1:]
+    pos = search_pos(ultimo_elemento , node)
 
-    #Sirve para llegar al final de la palabra (desp separar por casos para eleminarlo bien)
+    #Caso 0: Borro una palabra que este dentro de otra mas grande (Hola , Holanda)
+    if node[pos].children != None and node[pos].isEndOfWord == True:
+        node[pos].isEndOfWord = False
+        
+
+def last_node(node , element):
     children = node.children
     pos = search_pos(element[0],children)
     aux = children[pos]
     element = element[1:]
+    
     if children != None and element != "":
-        return deleteR(aux , element)
-    
-    if len(children) == 1 and children[0].children == None: #Si la lista final tiene 1 elemento y no tiene hijos
-        node.children = None
-
-    
-    if len(children) > 1 and children[pos].children == None: #Si la lista final tiene 1 elemento y no tiene hijos
-        aux2 = children[0].parent
-        aux2.children = None
-
-    #Modificar el codigo para que la primera parte sea una funcion 
+        return last_node(aux , element)
+    return node.children
