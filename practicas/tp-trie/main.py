@@ -28,9 +28,10 @@ print(t.search(T,"NINGUNO"))
 print(t.search(T,"CASAMIENTO"))
 #-------------- DELETE --------------
 print("-------------- DELETE --------------")
-print(t.delete(T, "PILA"))
+print(t.delete(T, "PILA")) #Elento q no existe 
 print(t.delete(T ,"HOLA")) #Caso 0: Borro una palabra que este dentro de otra mas grande (Hola , Holanda)
 print(t.delete(T ,"CAOS")) #CASO 1 Y 2 borro el ultimo elemento si no tiene hijos o borro el ultimo elemento si tiene hijos
 t.insert(T,"CAOS")
 t.insert(T,"CAOTA")
 print(t.delete(T ,"CAOS")) #CASO 3 Borro un elemento que se encuentre entre medio de 2 palabras (CASA, CAOS ,CAOTA)
+t.buscar_patron(T , "HO" , 4)

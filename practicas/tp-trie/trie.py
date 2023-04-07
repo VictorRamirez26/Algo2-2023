@@ -135,3 +135,29 @@ def last_node(node , element):
     if children != None and element != "":
         return last_node(aux , element)
     return node.children
+
+def buscar_patron(T , p , n):
+    if T.root == None:
+        return None
+    node = T.root
+    last_node = fin_patron(p , node.children , n)
+    
+    if new_node == None:
+        return None
+    else:
+        pass
+
+def fin_patron(p , node , n):
+    if len(p) == 0:
+        return node
+    pos = search_pos(p[0] ,node)
+    
+    if pos == None:
+        return None
+    else:
+        node = node[pos].children
+        p = p[1:] 
+        n -= 1
+        return fin_patron(p , node , n)
+        
+        
