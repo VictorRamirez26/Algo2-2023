@@ -34,4 +34,13 @@ print(t.delete(T ,"CAOS")) #CASO 1 Y 2 borro el ultimo elemento si no tiene hijo
 t.insert(T,"CAOS")
 t.insert(T,"CAOTA")
 print(t.delete(T ,"CAOS")) #CASO 3 Borro un elemento que se encuentre entre medio de 2 palabras (CASA, CAOS ,CAOTA)
-t.buscar_patron(T , "HO" , 4)
+
+#-------------- EJERCICIO 4 --------------
+T = t.Trie()
+t.insert(T,"HOLA" )
+t.insert(T,"HOZA" )
+t.insert(T,"HOPA" )
+print(t.buscar_patron(T , "HO" , 4))
+
+
+

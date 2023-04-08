@@ -145,13 +145,42 @@ def buscar_patron(T , p , n):
         return None
     if last_node != None:
         n = n - len(p)
+        cantidad , lista =  buscar_patron_recursive(last_node , n , 0 , [])
+        if cantidad == 0:
+            return None
+        return lista_palabras(p , lista , n)
         
-        
-# def buscar_patron_recursive(node):
-#     aux = []
-#     for i in range(len(node)):
-#         aux = node[]
+def buscar_patron_recursive(node , n , count , lista):
+    i=0
+    aux = n
+    aux1 = True
+    if node != None:
+        longitud = len(node)
+        while n > 0 and i < longitud:
+            n -= 1
+            if n == 0 and node[i].isEndOfWord == True:
+                lista.append(node[i].key)
+                count += 1    
+                aux1 = False              
+            i += 1
+            
+        for i in range(len(node)):
+            if aux1 == True:
+                lista.append(node[i].key)
+            count , lista =  buscar_patron_recursive(node[i].children , aux - 1, count , lista)
+            
+    return count , lista
 
+
+def lista_palabras(p , lista , n):
+# Crear la lista de subcadenas con p al comienzo
+    substrings = []
+    i = 0
+    while i + n <= len(lista):
+        substring = ''.join(lista[i:i+n])
+        substrings.append(p + substring)
+        i += n
+    return substrings
 
 
 def fin_patron(p , node):
@@ -164,5 +193,5 @@ def fin_patron(p , node):
     else:
         node = node[pos].children
         p = p[1:] 
-        return fin_patron(p ,node)
-              
+        return fin_patron(p ,node)             
+    
