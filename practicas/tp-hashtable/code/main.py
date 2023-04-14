@@ -32,4 +32,11 @@ d.delete(D , 100)
 d.delete(D , 3) #Solo hay un elemento y lo elemino
 #Ahora quiero agregar algo en ese lugar
 d.insert(D , 3 , "H3")
+print("--------Ejercicio 4--------")
+print(d.is_permutation("HOLA" , "ALHO"))
+print(d.is_permutation("HOLA" , "ALHODA"))
+
+print("--------Ejercicio 5--------")
+print(d.isSet("ADIOS"))
+print(d.isSet("HHOLA"))
 print("--------FIN--------")
