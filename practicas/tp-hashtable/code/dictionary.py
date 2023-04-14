@@ -53,3 +53,18 @@ def search(D , key):
             return None
         else:
             return list[pos].value
+        
+def delete(D , key):
+
+    new_key = func_hash(D , key)
+
+    if D[new_key] == None:
+        return D
+    else:
+        lista = D[new_key]
+        pos = search_key(key , lista)
+        if pos == None:
+            return D
+        else:
+            lista.pop(pos)
+            return D

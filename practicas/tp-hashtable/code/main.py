@@ -25,4 +25,11 @@ print(d.search(D , 5))
 print(d.search(D , 10))
 print(d.search(D , 100))
 
+print("--------Delete--------")
+#--------Delete--------
+d.delete(D , 0)
+d.delete(D , 100)
+d.delete(D , 3) #Solo hay un elemento y lo elemino
+#Ahora quiero agregar algo en ese lugar
+d.insert(D , 3 , "H3")
 print("--------FIN--------")
