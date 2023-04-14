@@ -3,7 +3,7 @@ import dictionary as d
 N = 5
 D = [None] * N
 print(d.func_hash(D , 9))
-
+#--------Insert--------
 #Si el diccionario esta vacio:
 d.insert(D , 0 , "H0")
 d.insert(D , 1 , "H1")
@@ -15,5 +15,14 @@ d.insert(D , 5 , "H5")
 d.insert(D , 10 , "H10")
 d.insert(D , 9 , "H9")
 #Si en la key ya hay un valor que ya estaba entonces:
-d.insert(D , 0 , "H0")
-print("-----FIN-----")
+d.insert(D , 20 , "H0")
+
+print("--------Search--------")
+#--------Search--------
+print(d.search(D , 0))
+print(d.search(D , 3))
+print(d.search(D , 5))
+print(d.search(D , 10))
+print(d.search(D , 100))
+
+print("--------FIN--------")
