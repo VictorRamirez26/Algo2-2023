@@ -39,8 +39,11 @@ dictionary.insert(dictionary.D , 0 , "H1")
 
 #--------PARTE 2--------
 print("--------Ejercicio 4--------")
-print(p2.is_permutation("HOLA" , "ALHO"))
-print(p2.is_permutation("HOLA" , "ALHODA"))
+print(p2.is_permutation("hola" , "olha"))
+print(p2.is_permutation("hola" , "holas"))
+print(p2.is_permutation("chau" , "hola"))
+#print(p2.is_permutation_opcion2("HOLA" , "ALHO"))
+#print(p2.is_permutation_opcion2("HOLA" , "ALHODA"))
 
 print("--------Ejercicio 5--------")
 print(p2.isSet("ADIOS"))
