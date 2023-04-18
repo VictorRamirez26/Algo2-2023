@@ -1,4 +1,4 @@
-class DictionaryNone:
+class DictionaryNode:
     def __init__(self, key= None, value = None):
         self.key = key
         self.value = value
@@ -18,11 +18,11 @@ class Dictionary:
         new_key = self.hash_function(key)
 
         if D[new_key] == None:
-            new_node = DictionaryNone(key , value)
+            new_node = DictionaryNode(key , value)
             D[new_key] = []
             D[new_key].append(new_node)
         else:
-            new_node = DictionaryNone(key , value)
+            new_node = DictionaryNode(key , value)
             if search_list(value , D[new_key]) == False:
                 D[new_key].append(new_node)
         return D

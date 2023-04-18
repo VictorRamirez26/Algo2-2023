@@ -52,4 +52,13 @@ lista3 = [1 , 5 , 12 , 2]
 print(p2.isSet(lista))
 print(p2.isSet(lista2))
 print(p2.isSet(lista3))
+
+dict = d.Dictionary(p2.hash_postal, 100003)
+p2.codigo_postal(dict , "A9341ZJK")
+p2.codigo_postal(dict ,"A9371ZJZ")
+p2.codigo_postal(dict ,"Z9281KLZ")
+p2.codigo_postal(dict ,"K9913LPQ")
+p2.codigo_postal(dict ,"L0012ZLP")
+p2.codigo_postal(dict ,"U0912KKK")
 print("--------FIN--------")
+
