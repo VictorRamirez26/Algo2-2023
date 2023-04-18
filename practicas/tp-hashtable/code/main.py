@@ -47,7 +47,9 @@ print(p2.is_permutation("chau" , "hola"))
 
 print("--------Ejercicio 5--------")
 lista = [1 , 5 , 12 , 1 , 2]
-lista2 = [1 , 5 , 12 , 2]
+lista2 = [2, 2, 2, 2]
+lista3 = [1 , 5 , 12 , 2]
 print(p2.isSet(lista))
 print(p2.isSet(lista2))
+print(p2.isSet(lista3))
 print("--------FIN--------")

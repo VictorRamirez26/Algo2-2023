@@ -39,6 +39,12 @@ def is_permutation_opcion2(element1 , element2):
         return False
 
 def isSet(lista):
+    """
+    El costo de iterar la lista para agregar los elementos al diccionario es  O(n), 
+    las funciones insert,search,delete son O(1). Por lo tanto la complejidad del algoritmo
+    viene dada por la longitud de la lista O(n).
+    """
+
     m = len(lista)
     A = (math.sqrt(5)-1)/2
     hash_function = lambda k : int(m*((k*A) % 1))
@@ -49,12 +55,14 @@ def isSet(lista):
 
     count = 0
     for key in lista:
-        aux = dict.search(dict.D , key)
+        aux = dict.search(dict.D , key) 
         if aux != None:
             dict.delete(dict.D , key)
             count += 1
 
-    if count == m:
+    #Si despues de buscar los elementos, el contador es igual a la longitud de la lista 
+    #entonces significa que no hay elementos repetidos
+    if count == m: 
         return True
     else:
         return False
