@@ -1,5 +1,5 @@
 import dictionary as d
-
+import math 
 def is_permutation(element1 , element2):
 
     """
@@ -38,6 +38,23 @@ def is_permutation_opcion2(element1 , element2):
     else:
         return False
 
-def isSet(element):
-    return len(element) == len(set(element))
-    #Hacer denuevo esta funcion ya que el set implementa hash table
+def isSet(lista):
+    m = len(lista)
+    A = (math.sqrt(5)-1)/2
+    hash_function = lambda k : int(m*((k*A) % 1))
+    dict = d.Dictionary(hash_function , m)
+
+    for key in lista:
+        dict.insert(dict.D , key ,str(key))
+
+    count = 0
+    for key in lista:
+        aux = dict.search(dict.D , key)
+        if aux != None:
+            dict.delete(dict.D , key)
+            count += 1
+
+    if count == m:
+        return True
+    else:
+        return False

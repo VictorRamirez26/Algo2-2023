@@ -46,6 +46,8 @@ print(p2.is_permutation("chau" , "hola"))
 #print(p2.is_permutation_opcion2("HOLA" , "ALHODA"))
 
 print("--------Ejercicio 5--------")
-print(p2.isSet("ADIOS"))
-print(p2.isSet("HHOLA"))
+lista = [1 , 5 , 12 , 1 , 2]
+lista2 = [1 , 5 , 12 , 2]
+print(p2.isSet(lista))
+print(p2.isSet(lista2))
 print("--------FIN--------")
