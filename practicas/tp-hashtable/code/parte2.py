@@ -85,3 +85,28 @@ def hash_postal(codigo):
     value = num + char_ascii
     hash_function = value % m
     return hash_function
+
+def compress(element):
+    #No supe como implementar diccionarios de manera optima en este ejercicio. La complejidad de
+    #este algoritmo es O(n) porque itero una lista de tamaño n.
+
+    lista = ""
+    lista2 = list(element)
+    cont = 0
+
+    for i in range(len(element)):
+        if i == 0:
+            lista += element[i]
+            cont += 1
+            continue
+        if element[i] == lista[-1]:
+            cont += 1
+        else:
+            lista += str(cont) + element[i]
+            cont = 1
+    lista += str(cont)
+    count = lista.count("1")
+    if count == len(lista2):
+        return element
+    else:
+        return lista
