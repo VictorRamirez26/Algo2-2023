@@ -110,3 +110,26 @@ def compress(element):
         return element
     else:
         return lista
+    
+def inText(subtext , text):
+    
+    aux = len(subtext)
+    dict = d.Dictionary(hash_text , 97)
+    for i in range(0, len(text)):
+        if i+3 <= len(text):
+            new_char = text[i:i+3]
+            dict.insert(dict.D , new_char , new_char)
+    found = dict.search(dict.D , subtext)
+    if found != None:
+        return True
+    else:
+        return False
+
+def hash_text(text):
+
+    char_ascii = 0
+    for i in range(len(text)):
+        char_ascii += ord(text[i])*10^i
+
+    hash_function = char_ascii % 97
+    return hash_function

@@ -65,5 +65,12 @@ p2.codigo_postal(dict ,"U0912KKK")
 print("--------Ejercicio 7--------")
 print(p2.compress("aabcccccaaa"))
 print(p2.compress("abc"))
-
+print("--------Ejercicio 8--------")
+#Casos donde deberia devolver True
+print(p2.inText("abc","aabttkabbabc"))
+print(p2.inText("abb","aabttkabbabc"))
+print(p2.inText("ttk","aabttkabbabc"))
+#Casos donde deberia devolver False
+print(p2.inText("zks","aabttkabbabc"))
+print(p2.inText("cba","aabttkabbabc"))
 print("--------FIN--------")
