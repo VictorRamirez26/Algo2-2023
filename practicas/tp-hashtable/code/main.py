@@ -73,4 +73,17 @@ print(p2.inText("ttk","aabttkabbabc"))
 #Casos donde deberia devolver False
 print(p2.inText("zks","aabttkabbabc"))
 print(p2.inText("cba","aabttkabbabc"))
+
+print("--------Ejercicio 9--------")
+
+conjunto = [1,2,3,4,5]
+subConjunto = [1,2,3]
+subConjunto2 = [3,2,1]
+subConjunto3 = [1,2,67]
+subConjunto4 = [1,2,3,8]
+print(p2.isSubset( subConjunto , conjunto))
+print(p2.isSubset( subConjunto2 , conjunto))
+print(p2.isSubset( subConjunto3 , conjunto))
+print(p2.isSubset( subConjunto4 , conjunto))
+
 print("--------FIN--------")

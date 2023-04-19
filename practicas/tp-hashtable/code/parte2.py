@@ -133,3 +133,25 @@ def hash_text(text):
 
     hash_function = char_ascii % 97
     return hash_function
+
+
+def isSubset(subconjunto , conjunto):
+    #La complejidad del algoritmo es O(n) y viene dada por la iteracion 
+    #del conjunto al insertar, aunque el costo de insertar es O(1)
+
+    m = 67 #Numero primo
+    hash_function = lambda key : key % m
+    dict = d.Dictionary(hash_function , m)
+
+    #Agrego los elementos del conjunto a un diccionario
+    for key in conjunto: 
+        dict.insert(dict.D , key , str(key))
+
+    #Itero el subconjunto y me fijo si sus elementos estan en el diccionario
+    #Si algun elemento no esta, entonces no es subconjunto 
+    #Recordemos que por ser conjunto no hay elementos repetidos en el diccionario
+    for key in subconjunto:
+        found = dict.search(dict.D , key)
+        if found == None:
+            return False
+    return True
