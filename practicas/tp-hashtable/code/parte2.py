@@ -1,5 +1,17 @@
 import dictionary as d
-import math 
+import math
+
+def ejercicio3(lista):
+    m = 1000
+    A = (math.sqrt(5)-1)/2
+    hash_function = lambda k : int(m*((k*A) % 1))
+    dict = d.Dictionary(hash_function , m)   
+    for key in lista:
+        dict.insert(dict.D , key , str(key))
+    return dict.D
+
+
+
 def is_permutation(element1 , element2):
 
     """

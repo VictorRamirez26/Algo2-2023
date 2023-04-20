@@ -65,6 +65,7 @@ p2.codigo_postal(dict ,"U0912KKK")
 print("--------Ejercicio 7--------")
 print(p2.compress("aabcccccaaa"))
 print(p2.compress("abc"))
+
 print("--------Ejercicio 8--------")
 #Casos donde deberia devolver True
 print(p2.inText("abc","aabttkabbabc"))
@@ -86,4 +87,13 @@ print(p2.isSubset( subConjunto2 , conjunto))
 print(p2.isSubset( subConjunto3 , conjunto))
 print(p2.isSubset( subConjunto4 , conjunto))
 
+print("--------Ejercicio 1--------")
+numbers = [5, 28, 19, 15, 20, 33, 12, 17, 10]
+dict = d.Dictionary(None , len(numbers)) #Longitud 9, va a aplicar key % 9 en la hash_function
+for key in numbers:
+    dict.insert(dict.D , key , str(key))
+
+print("--------Ejercicio 3--------")
+numbers = [61,62,63,64,65]
+dict = p2.ejercicio3(numbers)
 print("--------FIN--------")
