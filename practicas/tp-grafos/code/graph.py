@@ -27,3 +27,16 @@ class Graph:
     def print_graph(self , graph):
         for key in graph:
             print(f"{key}: {graph[key].list}")
+
+    def existPath(self , graph , v1 , v2):
+
+        if (v1 in graph and v2 in graph) == False:
+            return False
+        
+        for i in graph[v1].list:
+            if v2 in graph[v1].list:
+                return True
+            else:
+                return self.existPath(graph , i , v2)
+            
+        return False
