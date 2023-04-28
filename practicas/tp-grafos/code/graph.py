@@ -30,13 +30,17 @@ class Graph:
 
     def existPath(self , graph , v1 , v2):
 
+        #Me fijo si los vertices existen en el grafo
         if (v1 in graph and v2 in graph) == False:
             return False
         
+        #Itero sobre la lista de adyacencia de V1
         for i in graph[v1].list:
+            #Si V2 existe en la lista de adyacencia de v1 entonces:
             if v2 in graph[v1].list:
                 return True
-            else:
+            else:    
+                #Sino , el nuevo v1 va a ser un vertice de su lista de adyacencia
                 return self.existPath(graph , i , v2)
             
         return False
