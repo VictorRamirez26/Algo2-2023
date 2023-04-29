@@ -34,6 +34,10 @@ class Graph:
                 print(f"{key}: {graph[key].list}")
 
     def existPath(self, graph, v1, v2):
+
+        if (v1 in graph and v2 in graph) is not True:
+            return False
+        
         if v1 == v2:
             return True
 
@@ -66,3 +70,40 @@ class Graph:
             if self.existPath(grafo , grafo[1].key , grafo[key].key) == False:
                 return False
         return True
+
+    def isTree(self , grafo):
+        if self.isConnected(grafo) == False:
+            return False
+        
+        for key in range(1, len(grafo)-1):
+
+            if self.isCiclycal(grafo , 1 , key+1) is True:
+                return False
+        return True
+    
+
+    def isCiclycal(self , graph , v1 , v2):
+
+        if (v1 in graph and v2 in graph) is not True:
+            return False
+        
+        if v1 == v2:
+            return True
+
+        visited = set()
+        queue = [v1]
+
+        # Busco mientras haya elementos en la cola
+        while queue:
+            
+            if queue.count(queue[0]) > 1:
+                return True
+            
+            aux = queue.pop(0)
+            # Si el vertice no ha sido visitado, lo agrego al conjunto visited
+            if aux not in visited:
+                visited.add(aux)
+                #Recorro los vertices adyacentes del vertice actual
+                for adyacente in graph[aux].list:
+                    # Si no ,lo agrego a la cola.
+                    queue.append(adyacente)
