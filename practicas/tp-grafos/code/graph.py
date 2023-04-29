@@ -107,3 +107,11 @@ class Graph:
                 for adyacente in graph[aux].list:
                     # Si no ,lo agrego a la cola.
                     queue.append(adyacente)
+
+    def isComplete(self , graph):
+        
+        longitud = len(self.vertices)
+        for key in range (1,len(graph)-1):
+            if len(graph[key].list) != longitud-1:
+                return False
+        return True
