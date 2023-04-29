@@ -1,13 +1,13 @@
 class GraphNode:
-    def __init__(self , key = None):
+    def __init__(self , key = None , aristas = None):
         self.key = key
         self.list = []
-
-
+        self.connections = aristas
 class Graph:
-    def __init__(self , vertices = None):
-        self.vertices = len(vertices)
-
+    def __init__(self , vertices = None , aristas = None):
+        self.vertices = vertices
+        self.aristas = aristas
+        
     def createGraph(self , vertices, aristas):
         dict = {}
         for key in range(len(vertices)):
@@ -15,32 +15,54 @@ class Graph:
             dict[pos] = GraphNode(pos)
 
         dict = self.connections(dict , aristas)
+        dict["connections"] = GraphNode(None , aristas)
         return dict
 
     def connections(self , dict , aristas):
 
         for (v1 , v2) in aristas:
-            dict[v1].list.append(v2)
-            dict[v2].list.append(v1)
+            if v1 != v2:
+                dict[v1].list.append(v2)
+                dict[v2].list.append(v1)
+            else:
+                dict[v1].list.append(v1)
         return dict
     
     def print_graph(self , graph):
         for key in graph:
-            print(f"{key}: {graph[key].list}")
+            if key != "connections":
+                print(f"{key}: {graph[key].list}")
 
-    def existPath(self , graph , v1 , v2):
+    def existPath(self, graph, v1, v2):
+        if v1 == v2:
+            return True
 
-        #Me fijo si los vertices existen en el grafo
-        if (v1 in graph and v2 in graph) == False:
-            return False
-        
-        #Itero sobre la lista de adyacencia de V1
-        for i in graph[v1].list:
-            #Si V2 existe en la lista de adyacencia de v1 entonces:
-            if v2 in graph[v1].list:
-                return True
-            else:    
-                #Sino , el nuevo v1 va a ser un vertice de su lista de adyacencia
-                return self.existPath(graph , i , v2)
-            
+        visited = set()
+        queue = [v1]
+
+        # Busco mientras haya elementos en la cola
+        while queue:
+            aux = queue.pop(0)
+            # Si el vertice no ha sido visitado, lo agrego al conjunto visited
+            if aux not in visited:
+                visited.add(aux)
+                #Recorro los vertices adyacentes del vertice actual
+                for adyacente in graph[aux].list:
+                    #Si encuentro el vertice entonces:
+                    if adyacente == v2: 
+                        return True
+                    # Si no ,lo agrego a la cola.
+                    queue.append(adyacente)
         return False
+
+    def isConnected(self , grafo):
+
+        for key in range(1, len(grafo)):
+            if grafo[key] != "connections":
+                if grafo[key].list == []:
+                    return False
+
+        for key in range(2, len(grafo)):
+            if self.existPath(grafo , grafo[1].key , grafo[key].key) == False:
+                return False
+        return True
