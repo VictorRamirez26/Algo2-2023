@@ -135,3 +135,23 @@ class Graph:
                     #Los agrego a la cola con el vértice actual como padre
                     queue.append((adyacente, aux))
         return aristas
+    
+    def countConnections(self , graph):
+
+        if self.isConnected(graph) is True:
+            return 1   
+        
+        visited = set()
+        count = 0
+        for key in range(1, len(graph)):
+
+            if graph[key].key not in visited:
+                if graph[key].list == []:
+                    count += 1
+                    visited.add(graph[key].key)
+                else:
+                    count += 1
+                    visited.add(key)
+                    for i in graph[key].list:
+                        visited.add(i)
+        return count
