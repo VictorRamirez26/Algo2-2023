@@ -11,6 +11,7 @@ print("Existe camino?: " , grafo.existPath(new_graph , 3 , 4))
 print("Grafo conexo?: ", grafo.isConnected(new_graph))
 print("Es un arbol?: " , grafo.isTree(new_graph))
 print("Es un grafo completo?: " , grafo.isComplete(new_graph))
+print(grafo.convertTree(new_graph))
 
 
 print("-"*5 , "Grafo 2" ,"-"*5)
@@ -24,6 +25,7 @@ print("Existe camino?: " , grafo2.existPath(new_graph2 , 3 , 2))
 print("Grafo conexo?: ", grafo2.isConnected(new_graph2))
 print("Es un arbol?: " , grafo2.isTree(new_graph2))
 print("Es un grafo completo?: " , grafo2.isComplete(new_graph2))
+print(grafo2.convertTree(new_graph2))
 
 
 print("-"*5 , "Grafo 3" ,"-"*5)
@@ -37,6 +39,7 @@ print("Existe camino?: " , grafo3.existPath(new_graph3 , 1 , 1))
 print("Grafo conexo?: ", grafo3.isConnected(new_graph3))
 print("Es un arbol?: " , grafo3.isTree(new_graph3))
 print("Es un grafo completo?: " , grafo3.isComplete(new_graph3))
+print(grafo3.convertTree(new_graph3))
 
 
 print("-"*5 , "Grafo 4" ,"-"*5)
@@ -51,6 +54,8 @@ print("Existe camino?: " , grafo4.existPath(new_graph4 , 1 , 4))
 print("Grafo conexo?: ", grafo4.isConnected(new_graph4))
 print("Es un arbol?: " , grafo4.isTree(new_graph4))
 print("Es un grafo completo?: " , grafo4.isComplete(new_graph4))
+print(grafo4.convertTree(new_graph4))
+
 
 print("-"*5 , "Grafo 5" ,"-"*5)
 #Grafo conexo y aciclico (arbol)
@@ -61,6 +66,8 @@ new_graph5 = grafo5.createGraph(vertices , arista)
 grafo4.print_graph(new_graph5)
 print(grafo5.isTree(new_graph5))
 print("Es un grafo completo?: " , grafo5.isComplete(new_graph5))
+print(grafo5.convertTree(new_graph5))
+
 
 print("-"*5 , "Grafo 6" ,"-"*5)
 #Grafo camino con un ciclo
@@ -71,6 +78,7 @@ new_graph6 = grafo6.createGraph(vertices , arista)
 grafo6.print_graph(new_graph6)
 print(grafo6.isTree(new_graph6))
 print("Es un grafo completo?: " , grafo6.isComplete(new_graph6))
+print(grafo6.convertTree(new_graph6))
 
 
 print("-"*5 , "Grafo 7" ,"-"*5)
@@ -79,6 +87,7 @@ vertices = [1 , 2 , 3]
 arista = [(1 , 2) , (1 , 3) , (2 , 3)]
 grafo7 = graph.Graph(vertices)
 new_graph7 = grafo7.createGraph(vertices , arista)
-grafo4.print_graph(new_graph7)
+grafo7.print_graph(new_graph7)
 print(grafo7.isTree(new_graph7))
 print("Es un grafo completo?: " , grafo7.isComplete(new_graph7))
+print(grafo7.convertTree(new_graph7))

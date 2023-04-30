@@ -115,3 +115,23 @@ class Graph:
             if len(graph[key].list) != longitud-1:
                 return False
         return True
+    
+    def convertTree(self , graph):
+
+        visited = set()
+        queue = [(graph[1].key, None)]  
+        aristas = []  # Aristas del arbol
+        
+        while queue:
+            aux, parent = queue.pop(0)
+            # Si el vértice no ha sido visitado, lo agrego al conjunto visited
+            if aux not in visited:
+                visited.add(aux)
+
+                if parent is not None:
+                    aristas.append((parent, aux))
+                # Recorro los vértices adyacentes del vértice actual
+                for adyacente in graph[aux].list:
+                    #Los agrego a la cola con el vértice actual como padre
+                    queue.append((adyacente, aux))
+        return aristas
