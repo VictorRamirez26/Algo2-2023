@@ -134,7 +134,8 @@ class Graph:
                 # Recorro los vértices adyacentes del vértice actual
                 for adyacente in graph[aux].list:
                     #Los agrego a la cola con el vértice actual como padre
-                    queue.append((adyacente, aux))
+                    if adyacente not in visited:
+                        queue.append((adyacente, aux))
         return aristas
     
     def countConnections(self , graph):
@@ -176,3 +177,19 @@ class Graph:
                     queue.append((adyacente, aux))
         
         return self.createGraph(self.vertices , aristas)
+    
+    def convertToDSFTree(self , graph , v):
+
+        visited = set()
+        aristas = []
+        self.DSF_recursive(graph , v , visited , aristas)
+        return self.createGraph(self.vertices , aristas)
+
+    def DSF_recursive(self , graph , v , visited , aristas):
+        
+        visited.add(v) #Agrego el primer vertice  de todos al conjunto
+        for adyacente in graph[v].list:
+
+            if adyacente not in visited:
+                aristas.append((v , adyacente)) #Agrego su adyacente
+                self.DSF_recursive(graph , adyacente , visited , aristas) #Recorro desde el primer adyacente
