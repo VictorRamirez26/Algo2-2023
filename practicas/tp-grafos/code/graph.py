@@ -193,3 +193,33 @@ class Graph:
             if adyacente not in visited:
                 aristas.append((v , adyacente)) #Agrego su adyacente
                 self.DSF_recursive(graph , adyacente , visited , aristas) #Recorro desde el primer adyacente
+
+    def bestRoad(self , graph ,  v1 , v2):
+
+        bfs_tree = self.convertToBFSTree(graph, v1)
+        visited = set()
+        queue = [(v1, None)]
+
+        while queue:
+            node, prev = queue.pop(0)
+
+            if node == v2:
+                #Construyo la ruta desde v1 a v2
+                path = []
+                while prev is not None:
+                    path.append((prev, node))
+                    node, prev = prev, bfs_tree[prev].parent
+                path.reverse()
+                return path
+
+            if node not in visited:
+                visited.add(node)
+                #El nodo anterior es el padre del nodo actual
+                bfs_tree[node].parent = prev 
+                #Recorro los nodos adyacentes
+                for adyacente in bfs_tree[node].list:
+                    #Si el adyacente no ha sido visitado lo agrego a la cola
+                    if adyacente not in visited:
+                        queue.append((adyacente, node))
+
+        return None

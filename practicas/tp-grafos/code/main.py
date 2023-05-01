@@ -19,6 +19,8 @@ grafo.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo.convertToDSFTree(new_graph , 1)
 grafo.print_graph(dfs)
+print(grafo.bestRoad(new_graph , 1 , 3))
+
 
 print("-"*5 , "Grafo 2" ,"-"*5)
 #Grafo 2: No existe un camino entre el V3 y el V2
@@ -39,6 +41,8 @@ grafo2.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo2.convertToDSFTree(new_graph2 , 1)
 grafo2.print_graph(dfs)
+print(grafo2.bestRoad(new_graph2 , 1 , 4))
+
 
 print("-"*5 , "Grafo 3" ,"-"*5)
 #Grafo 3: Existe un camino entre V1 y el mismo
@@ -59,6 +63,7 @@ grafo3.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo3.convertToDSFTree(new_graph3 , 1)
 grafo3.print_graph(dfs)
+print(grafo3.bestRoad(new_graph3 , 1 , 3))
 
 
 print("-"*5 , "Grafo 4" ,"-"*5)
@@ -81,6 +86,7 @@ grafo4.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo4.convertToDSFTree(new_graph4 , 1)
 grafo4.print_graph(dfs)
+print(grafo4.bestRoad(new_graph4 , 1 , 3))
 
 
 print("-"*5 , "Grafo 5" ,"-"*5)
@@ -100,6 +106,8 @@ grafo5.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo5.convertToDSFTree(new_graph5 , 1)
 grafo5.print_graph(dfs)
+print(grafo5.bestRoad(new_graph5 , 1 , 4))
+
 
 print("-"*5 , "Grafo 6" ,"-"*5)
 #Grafo camino con un ciclo
@@ -118,6 +126,7 @@ grafo6.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo6.convertToDSFTree(new_graph6 , 1)
 grafo6.print_graph(dfs)
+print(grafo6.bestRoad(new_graph6 , 1 , 5))
 
 
 print("-"*5 , "Grafo 7" ,"-"*5)
@@ -137,3 +146,4 @@ grafo7.print_graph(bfs)
 print("Convierto en un DFS")
 dfs = grafo7.convertToDSFTree(new_graph7 , 1)
 grafo7.print_graph(dfs)
+print(grafo7.bestRoad(new_graph7 , 1 , 5))
