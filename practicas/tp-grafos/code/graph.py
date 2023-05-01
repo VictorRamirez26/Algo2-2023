@@ -106,7 +106,8 @@ class Graph:
                 #Recorro los vertices adyacentes del vertice actual
                 for adyacente in graph[aux].list:
                     # Si no ,lo agrego a la cola.
-                    queue.append(adyacente)
+                    if adyacente not in visited:
+                        queue.append(adyacente)
 
     def isComplete(self , graph):
         
@@ -155,3 +156,23 @@ class Graph:
                     for i in graph[key].list:
                         visited.add(i)
         return count
+    
+    def convertToBFSTree(self , graph , v):
+        visited = set()
+        queue = [(v, None)]  
+        aristas = []  # Aristas del arbol
+        
+        while queue:
+            aux, parent = queue.pop(0)
+            # Si el vértice no ha sido visitado, lo agrego al conjunto visited
+            if aux not in visited:
+                visited.add(aux)
+
+                if parent is not None:
+                    aristas.append((parent, aux))
+                # Recorro los vértices adyacentes del vértice actual
+                for adyacente in graph[aux].list:
+                    #Los agrego a la cola con el vértice actual como padre
+                    queue.append((adyacente, aux))
+        
+        return self.createGraph(self.vertices , aristas)
