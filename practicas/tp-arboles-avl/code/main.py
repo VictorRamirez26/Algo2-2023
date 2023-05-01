@@ -187,12 +187,25 @@ avl.insert(B , 4)
 avl.insert(B , 3)
 print("*"*15)
 
-#avl.delete(B , 3)
-# print("X")
-# avl.delete(B , 4)
-# print("X")
-# avl.delete(B , 80)
-# print("X")
+#Borro una hoja
+avl.delete(B , 3)
+print("X")
+#avl.insert(B , 19)
+
+#Borro un nodo con un hijo del lado derecho, que se encuentra en la rama izquierda
+avl.delete(B , 4)
+print("X")
+
+avl.insert(B , 6)
+avl.insert(B , 3)
+
+###Borro un nodo con un hijo del lado derecho, que se encuentra en la rama derecha
+###avl.delete(B , 18)
+
+#
+print("X")
+avl.delete(B , 10)
+print("X")
 
 
 

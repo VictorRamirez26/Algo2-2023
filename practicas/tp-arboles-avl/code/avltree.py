@@ -251,36 +251,25 @@ def deleteR(B,node):
      #Caso 3: elimino un nodo con un hijo del lado derecho
      if node.rightnode != None and node.leftnode == None:
           if node.parent.rightnode != None and node.parent.rightnode == node:
+               node.rightnode.parent = node.parent
                node.parent.rightnode = node.rightnode
                return node.key
           elif node.parent.leftnode != None and node.parent.leftnode == node:
+               node.rightnode.parent = node.parent
                node.parent.leftnode = node.rightnode
                return node.key
+               
+     # Caso 4: eliminar un nodo con dos hijos
+     # En este caso, se reemplaza el nodo a eliminar por el nodo sucesor en orden, que es el nodo más pequeño en su subárbol derecho
+     successor = get_successor(node.rightnode)
+     node.key = successor.key
+     deleteR(B, successor)
 
-     #Caso 4: Elimino un nodo que tiene 2 hijos
+     return node.key
 
-     parent_aux = node.parent
-     right_aux = node.rightnode
-     mayor = mayor_menores(node.leftnode)
-
-     if caso == 1:
-          parent_aux.leftnode = mayor
-          mayor.rightnode = right_aux
-          mayor.parent = parent_aux
-          mayor.rightnode.parent = mayor
-     else:
-          parent_aux.rightnode = mayor
-          mayor.rightnode = right_aux
-          mayor.parent = parent_aux
-          mayor.rightnode.parent = mayor 
-
-     return mayor
-
-def mayor_menores(node):
-
-     if node.rightnode != None:
-          currentNode = mayor_menores(node.rightnode)
-     if currentNode != None:
-          return currentNode
-     else:
-          return node
+def get_successor(node):
+     # Se encuentra el nodo sucesor en orden del árbol, que es el nodo más pequeño en el subárbol derecho del nodo dado
+     current = node
+     while current.leftnode is not None:
+          current = current.leftnode
+     return current
