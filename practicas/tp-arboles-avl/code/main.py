@@ -9,10 +9,10 @@ import avltree as avl
 B = binarytree.BinaryTree()
 binarytree.insert(B , "E" , 10)
 binarytree.insert(B , "C" , 5)
-binarytree.insert(B , "D" , 6) 
-binarytree.insert(B , "B" , 4) 
-binarytree.insert(B , "A" , 3) 
-binarytree.insert(B , "F" , 11) 
+binarytree.insert(B , "D" , 6)
+binarytree.insert(B , "B" , 4)
+binarytree.insert(B , "A" , 3)
+binarytree.insert(B , "F" , 11)
 
 
 print(B.root.value)
@@ -38,8 +38,8 @@ print(B.rightnode.rightnode.value)
 B = binarytree.BinaryTree()
 binarytree.insert(B , "A" , 10)
 binarytree.insert(B , "B" , 12)
-binarytree.insert(B , "D" , 11) 
-binarytree.insert(B , "C" , 15) 
+binarytree.insert(B , "D" , 11)
+binarytree.insert(B , "C" , 15)
 
 
 print(B.root.value)
@@ -166,7 +166,7 @@ avl.insert(B , 5)
 avl.insert(B , 18)
 avl.insert(B , 80)
 
-#Antes de que el arbol quede desbalanceado
+print("Antes de que el arbol quede desbalanceado")
 
 print(B.root.key)
 print(B.root.leftnode.key)
@@ -185,6 +185,14 @@ avl.insert(B , 100)
 avl.insert(B , 4)
 #Inserto una key que va a desbalancear el arbol por izquierda
 avl.insert(B , 3)
+print("*"*15)
+
+#avl.delete(B , 3)
+# print("X")
+# avl.delete(B , 4)
+# print("X")
+# avl.delete(B , 80)
+# print("X")
 
 
 

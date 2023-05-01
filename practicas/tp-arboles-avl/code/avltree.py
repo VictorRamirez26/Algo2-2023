@@ -172,8 +172,10 @@ def insert_recursive(B , node):
      if node == None:
           return 
      
-     #Calculo el balance factor 
-     calculateBalance(B)
+     #Calculo el balance factor
+     aux_avl = AVLTree()
+     aux_avl.root = node
+     calculateBalance(aux_avl)
 
 
      #Si esta desbalanceado entonces:
@@ -201,3 +203,84 @@ def insert_recursive(B , node):
           #Si no esta desbalanceado me fijo en el parent
           return insert_recursive(B , node.parent)
 
+
+def searchR_key(current,key):
+
+     if current == None:
+          return None
+     if current.key == key:
+          return current
+
+     leftNode = searchR_key(current.leftnode,key)
+     if leftNode != None:
+          return leftNode 
+
+     rightNode = searchR_key(current.rightnode,key)
+     if rightNode != None:
+          return rightNode 
+
+def delete(B,key):
+     node = searchR_key(B.root,key)
+     if node == None:
+          return None
+     else:
+          node = deleteR(B,node)
+
+     return reBalance(B)
+
+
+def deleteR(B,node):
+
+     #Caso 1: elimino una hoja
+     if node.leftnode == None and node.rightnode == None:
+          if node.parent.leftnode == node:
+               node.parent.leftnode = None
+               return node.key
+          elif node.parent.rightnode == node:
+               node.parent.rightnode = None
+               return node.key
+
+     #Caso 2: elimino un nodo con un hijo del lado izquierdo
+     if node.leftnode != None and node.rightnode == None:
+          if node.parent.leftnode != None and node.parent.leftnode == node:
+               node.parent.leftnode = node.leftnode
+               return node.key
+          elif node.parent.rightnode != None and node.parent.rightnode == node:
+               node.parent.rightnode = node.leftnode
+               return node.key
+     #Caso 3: elimino un nodo con un hijo del lado derecho
+     if node.rightnode != None and node.leftnode == None:
+          if node.parent.rightnode != None and node.parent.rightnode == node:
+               node.parent.rightnode = node.rightnode
+               return node.key
+          elif node.parent.leftnode != None and node.parent.leftnode == node:
+               node.parent.leftnode = node.rightnode
+               return node.key
+
+     #Caso 4: Elimino un nodo que tiene 2 hijos
+
+     parent_aux = node.parent
+     right_aux = node.rightnode
+     mayor = mayor_menores(node.leftnode)
+
+     if caso == 1:
+          parent_aux.leftnode = mayor
+          mayor.rightnode = right_aux
+          mayor.parent = parent_aux
+          mayor.rightnode.parent = mayor
+     else:
+          parent_aux.rightnode = mayor
+          mayor.rightnode = right_aux
+          mayor.parent = parent_aux
+          mayor.rightnode.parent = mayor 
+
+     return mayor
+
+def mayor_menores(node):
+
+     if node.rightnode != None:
+          currentNode = mayor_menores(node.rightnode)
+     if currentNode != None:
+          return currentNode
+     else:
+          return node
