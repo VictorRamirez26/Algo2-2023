@@ -1,5 +1,6 @@
 import graph
-
+import graph_ponderate
+"""
 print("-"*5 , "Grafo 1" ,"-"*5)
 #Grafo 1 : Existe un camino entre el V3 y el V4
 vertices = [1 , 2 , 3 , 4]
@@ -147,3 +148,29 @@ print("Convierto en un DFS")
 dfs = grafo7.convertToDSFTree(new_graph7 , 1)
 grafo7.print_graph(dfs)
 print(grafo7.bestRoad(new_graph7 , 1 , 5))
+"""
+
+print("-"*6 , "ARBOLES ABARCADORES DE COSTO MINIMO", "-"*6)
+
+vertices = [1 , 2 , 3 , 4 , 5]
+arista = [(1 , 2 , 10), (1 , 3 , 9), (1, 5 , 7 ),
+        (3 , 4 , 4) , (4 , 5 , 20), (4 , 2 , 13) , (5 , 3 , 1)]
+grafo = graph_ponderate.Graph_Ponderado(vertices , arista)
+new_graph = grafo.createGraph_ponderado(vertices , arista)
+print("Algoritmo de Prim: " , grafo.prim(new_graph))
+
+vertices = [1 , 2 , 3 , 4 ]
+arista = [(1 , 2 , 10), (1 , 3 , 9), (1, 4 , 7 ),
+        (3 , 4 , 4) , (4 , 2 , 13) , (3 , 2 , 1)]
+grafo = graph_ponderate.Graph_Ponderado(vertices , arista)
+new_graph1 = grafo.createGraph_ponderado(vertices , arista)
+print("Algoritmo de Prim: " , grafo.prim(new_graph1))
+
+vertices = [1 , 2 , 3 , 4 , 5 , 6]
+arista = [(1 , 2 , 6), (1 , 3 , 1), (1, 4 , 5 ),
+        (2 , 3 , 5) , (3 , 4 , 5) , (2 , 5 , 3),
+        (4 , 6 , 2) , (5 , 6 , 6) , (3 , 5 , 6) , (3 , 6 , 4)]
+grafo = graph_ponderate.Graph_Ponderado(vertices , arista)
+new_graph2 = grafo.createGraph_ponderado(vertices , arista)
+print("Algoritmo de Prim: " , grafo.prim(new_graph2))
+
