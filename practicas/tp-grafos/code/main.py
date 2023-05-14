@@ -158,6 +158,9 @@ arista = [(1 , 2 , 10), (1 , 3 , 9), (1, 5 , 7 ),
 grafo = graph_ponderate.Graph_Ponderado(vertices , arista)
 new_graph = grafo.createGraph_ponderado(vertices , arista)
 print("Algoritmo de Prim: " , grafo.prim(new_graph))
+print("Algoritmo de Kruskal: " , grafo.kruskal(new_graph))
+print("--"*12)
+
 
 vertices = [1 , 2 , 3 , 4 ]
 arista = [(1 , 2 , 10), (1 , 3 , 9), (1, 4 , 7 ),
@@ -165,6 +168,9 @@ arista = [(1 , 2 , 10), (1 , 3 , 9), (1, 4 , 7 ),
 grafo = graph_ponderate.Graph_Ponderado(vertices , arista)
 new_graph1 = grafo.createGraph_ponderado(vertices , arista)
 print("Algoritmo de Prim: " , grafo.prim(new_graph1))
+print("Algoritmo de Kruskal: " , grafo.kruskal(new_graph1))
+print("--"*12)
+
 
 vertices = [1 , 2 , 3 , 4 , 5 , 6]
 arista = [(1 , 2 , 6), (1 , 3 , 1), (1, 4 , 5 ),
@@ -173,4 +179,4 @@ arista = [(1 , 2 , 6), (1 , 3 , 1), (1, 4 , 5 ),
 grafo = graph_ponderate.Graph_Ponderado(vertices , arista)
 new_graph2 = grafo.createGraph_ponderado(vertices , arista)
 print("Algoritmo de Prim: " , grafo.prim(new_graph2))
-
+print("Algoritmo de Kruskal: " , grafo.kruskal(new_graph2))

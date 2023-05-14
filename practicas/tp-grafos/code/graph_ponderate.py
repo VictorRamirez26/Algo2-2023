@@ -56,3 +56,63 @@ class Graph_Ponderado:
                     if adyacente.key not in visited:
                         heapq.heappush(queue, (adyacente.value, adyacente.key)) #Agrego los adyacentes con sus pesos
         return new_arbol
+    
+    def kruskal(self, graph):
+        
+        #Primero busco todas las conexiones
+        visited = set()
+        aristas = []
+        
+        for i in range(1 , len(graph)+1):
+            for j in graph[i].list:
+                if j.key not in visited:
+                    aristas.append((i , j.key , j.value))
+            visited.add(i)
+        #Ordeno las aristas de menor a mayor segun su peso
+        vertices = list(visited)
+        aristas = sorted(aristas , key = lambda x: x[2])
+        new_aristas = []
+        new_dictionary = Graph_Ponderado(vertices , aristas)
+
+        for tuple in aristas :
+
+            new_aristas.append(tuple)
+            #Creo un nuevo grafo y me fijo si tiene agregando la tupla genera ciclo
+            aux_dict = new_dictionary.createGraph_ponderado(vertices , new_aristas)
+            #Si genera ciclo entonces lo saco
+            if self.isCiclycal(aux_dict , aristas[0][0] , tuple[1]) == True:
+                new_aristas.remove(tuple)
+        return new_aristas
+
+
+
+    def isCiclycal(self , graph , v1 , v2):
+
+        if (v1 in graph and v2 in graph) is not True:
+            return False
+        
+        if v1 == v2:
+            return True
+
+        visited = set()
+        queue = [v1]
+
+        # Busco mientras haya elementos en la cola
+        while queue:
+            
+            if queue.count(queue[0]) > 1:
+                return True
+            
+            aux = queue.pop(0)
+            # Si el vertice no ha sido visitado, lo agrego al conjunto visited
+            if aux not in visited:
+                visited.add(aux)
+                #Recorro los vertices adyacentes del vertice actual
+                for adyacente in graph[aux].list:
+                    # Si no ,lo agrego a la cola.
+                    if adyacente.key not in visited:
+                        queue.append(adyacente.key)
+        
+        
+        
+
